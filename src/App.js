@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
+
 function App() {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_API_URL + '/session')
+    axios.get('/session', { withCredentials: true })
       .then(response => {
         if (response.data.username) {
           setUserData(response.data);
@@ -22,7 +24,7 @@ function App() {
   };
 
   const handleLogout = () => {
-    axios.post('/logout')
+    axios.get('/logout', { withCredentials : true })
       .then(() => {
         setUserData(null);
       });
