@@ -6,7 +6,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/session')
+    axios.get(process.env.REACT_APP_API_URL + '/session')
       .then(response => {
         if (response.data.username) {
           setUserData(response.data);
