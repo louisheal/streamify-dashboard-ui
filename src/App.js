@@ -18,7 +18,7 @@ function App() {
   }, []);
 
   const handleLogin = () => {
-    window.location.href = `http://localhost:5000/auth/twitch`;
+    window.location.href = process.env.REACT_APP_API_URL + '/auth/twitch';
   };
 
   const handleLogout = () => {
