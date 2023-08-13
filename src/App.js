@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import './App.css';
+
 axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 function App() {
@@ -47,7 +49,7 @@ function App() {
         </div>
       ) : (
         <div>
-          <button onClick={handleLogin}>Login with Twitch</button>
+          <button className="twitch-btn" onClick={handleLogin}>Login with Twitch</button>
         </div>
       )}
     </div>
