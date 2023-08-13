@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import './App.css';
+import streamifyLogo from './assets/StreamifyLogo.png'
+import twitchLogo from './assets/TwitchGlitchPurple.svg'
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
@@ -10,9 +12,13 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/session', { withCredentials: true })
+    const delay = new Promise((resolve) => setTimeout(resolve, 500));
+    const fetchSession = axios.get('/session', { withCredentials: true });
+
+    Promise.all([delay, fetchSession])
       .then(response => {
-        if (response.data.username) {
+        console.log(response[1])
+        if (response[1].data.username) {
           setUserData(response.data);
         }
       })
@@ -35,7 +41,9 @@ function App() {
   if (loading) {
     return (
       <div className="App">
-        <p>Loading...</p>
+        <div className="center-container">
+          <div className="spinner"></div>
+        </div>
       </div>
     )
   }
@@ -48,8 +56,12 @@ function App() {
           <button onClick={handleLogout}>Logout</button>
         </div>
       ) : (
-        <div>
-          <button className="twitch-btn" onClick={handleLogin}>Login with Twitch</button>
+        <div className="center-horizontal">
+          <img src={streamifyLogo} alt="Streamify Logo" className="streamify-logo"/>
+          <button className="twitch-btn" onClick={handleLogin}>
+            <img src={twitchLogo} alt="Twitch Logo" className="twitch-logo" />
+            Login with Twitch
+          </button>
         </div>
       )}
     </div>
