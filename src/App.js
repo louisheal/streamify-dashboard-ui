@@ -12,13 +12,12 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const delay = new Promise((resolve) => setTimeout(resolve, 500));
+    const delay = new Promise((resolve) => setTimeout(resolve, 1000));
     const fetchSession = axios.get('/session', { withCredentials: true });
 
     Promise.all([delay, fetchSession])
-      .then(response => {
-        console.log(response[1])
-        if (response[1].data.username) {
+      .then(([_, response]) => {
+        if (response.data.username) {
           setUserData(response.data);
         }
       })
@@ -45,27 +44,87 @@ function App() {
           <div className="spinner"></div>
         </div>
       </div>
-    )
-  }
+    );
+  };
+
+  const LogoutButton = () => {
+    return (
+      <div className="right">
+        <button className="btn" onClick={handleLogout}>Logout</button>
+      </div>
+    );
+  };
+
+  const Panel = (props) => {
+    return (
+      <div className={props.className}>
+        <div>
+          <h2>
+            {props.label}
+          </h2>
+        </div>
+        <div>
+          <h3>
+            {props.value}
+          </h3>
+        </div>
+      </div>
+    );
+  };
+
+  const Dashboard = (props) => {
+    const data = props.data;
+    return (
+      <div className="dashboard">
+        <div className="panel-parent">
+          <h1>Welcome, {data.username}!</h1>
+          <LogoutButton />
+        </div>
+        <div className="panel-parent">
+          <Panel className="panel light" label="DISCOUNT CODE" value={data.code} />
+          <Panel className="panel light" label="BALANCE" value={data.balance} />
+        </div>
+        <div className="panel-parent">
+          <Panel className="panel dark" label="SALES" value={data.sales} />
+          <Panel className="panel dark" label="LABEL" value="value" />
+        </div>
+      </div>
+    );
+  };
+
+  const TwitchLogo = () => {
+    return (
+      <img src={twitchLogo} alt="Twitch Logo" className="twitch-logo" />
+    );
+  };
+
+  const TwitchLoginButton = () => {
+    return (
+      <button className="btn twitch-btn" onClick={handleLogin}>
+        <TwitchLogo />
+        Login with Twitch
+      </button>
+    );
+  };
+
+  const LoginPage = () => {
+    return (
+      <div className="center-horizontal">
+        <img src={streamifyLogo} alt="Streamify Logo" className="streamify-logo"/>
+        <TwitchLoginButton />
+      </div>
+    );
+  };
 
   return (
     <div className="App">
       {userData ? (
-        <div>
-          <p>Welcome, {userData.username}!</p>
-          <button onClick={handleLogout}>Logout</button>
-        </div>
+        <Dashboard data={userData} />
       ) : (
-        <div className="center-horizontal">
-          <img src={streamifyLogo} alt="Streamify Logo" className="streamify-logo"/>
-          <button className="twitch-btn" onClick={handleLogin}>
-            <img src={twitchLogo} alt="Twitch Logo" className="twitch-logo" />
-            Login with Twitch
-          </button>
-        </div>
+        <LoginPage />
       )}
     </div>
   );
-}
+};
 
 export default App;
