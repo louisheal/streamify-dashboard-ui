@@ -1,0 +1,13 @@
+.error-toast {
+  background-color: red;
+  text-align: center;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  padding: 0.5px 20px;
+}
+
+p {
+  white-space: pre-line;
+}

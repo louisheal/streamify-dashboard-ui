@@ -1,113 +1,22 @@
 .App {
-  display: flex;
-  background-image: linear-gradient(45deg, #260046, #7400DC);
-  min-height: 100vh;
-  min-width: 100vw;
-}
-
-.center-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-.center-horizontal {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  width: 100%;
   height: 100%;
-  width: 100%;
+  overflow: auto;
 }
 
-.right {
-  text-align: right;
+.gradient-bg {
+  background-image: linear-gradient(45deg, #260046, #7400DC);
+  background-attachment: fixed;
+  overflow: auto;
 }
 
-.dashboard {
-  width: 100%;
-}
-
-.panel-parent {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 24px;
-  box-sizing: border-box;
-  padding: 0 24px;
-  padding-top: 24px;
-  width: 100%;
-}
-
-.panel {
-  color: rgb(220, 220, 220);
-  border-radius: 20px;
-  padding: 16px;
-}
-
-.light {
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.dark {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-.streamify-logo {
-  width: 70%;
-  max-width: 40vw;
-  margin-top: 64px;
-  min-width: 370px;
-}
-
-.btn {
-  font-size: 1.5em;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  outline: none;
-  padding: 10px 20px;
-  transition: opacity 0.3s ease;
-}
-
-.btn:hover {
-  opacity: 0.7;
-}
-
-.twitch-btn {
-  background-color: white;
-  color: #9146FF;
+.flexbox-row {
   display: flex;
-  align-items: center;
-  margin-top: 48px;
+  flex-direction: row;
+  gap: 30px;
 }
 
-.twitch-logo {
-  width: 30px;
-  height: 30px;
-  margin-right: 16px;
-}
-
-.spinner {
-  border: 4px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top: 4px solid #fff;
-  width: 72px;
-  height: 72px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-h1 {
-  margin: 0;
-  color: white;
-}
-
-p {
-  margin: 0;
-  color: white;
+.flexbox-column {
+  display: flex;
+  flex-direction: column;
 }
