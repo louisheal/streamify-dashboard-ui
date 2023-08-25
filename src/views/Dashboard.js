@@ -13,7 +13,7 @@ const HorizontalBar = () => {
 
 const Dashboard = ({ onLogout, data }) => {
   return (
-    <div className='flex flex-row bg-neutral-900 w-full h-full'>
+    <div className='flex flex-row bg-neutral-900 overflow-auto w-full h-full'>
       {/* <div className='bg-purple-900 w-16 h-auto'>
 
       </div> */}

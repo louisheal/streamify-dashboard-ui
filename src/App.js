@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Loading from 'views/Loading/Loading';
-import LoginPage from 'views/Login/Login.js';
+import LoginPage from 'views/Login.js';
 import Dashboard from 'views/Dashboard';
 
 import './App.css';
