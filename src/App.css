@@ -12,3 +12,7 @@
 .w-min-320 {
   min-width: 320px;
 }
+
+.w-min-content {
+  width: min-content;
+}
