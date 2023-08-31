@@ -1,20 +1,12 @@
 import React from 'react';
 import PanelGrid from './PanelGrid';
-
-const OrderTable = () => {
-  return (
-    <div className='flex flex-col w-full lg:basis-2/3 gap-3'>
-      <h1 className='text-white text-2xl font-thin'>Your Sales</h1>
-      <div className='bg-neutral-800 w-full h-full'></div>
-    </div>
-  );
-};
+import OrderGraph from 'components/OrderGraph/OrderGraph'
 
 const InfoGrid = ({ discountCode, balance, sales }) => {
   return (
     <div className='flex flex-row flex-wrap lg:flex-nowrap justify-between gap-8'>
-      <OrderTable />
-      <PanelGrid discountCode={discountCode} balance={balance} sales={sales} />
+      <OrderGraph labels={['1', '2', '3']} values={[0.49, 0.59, 0.68]} />
+      <PanelGrid discountCode={discountCode} balance={'$' + balance} sales={sales} />
     </div>
   );
 };

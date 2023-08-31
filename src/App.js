@@ -15,11 +15,11 @@ function App() {
   const [toastMsg, setToastMsg] = useState(null);
 
   useEffect(() => {
-    axios.get('/session', { withCredentials: true })
+    axios.get('/userdata', { withCredentials: true })
       .then(response => {
-        if (response.data.username) {
+        if (response.data.status === 'logged_in') {
           setUserData(response.data);
-        } else if (response.data.msg) {
+        } else if (response.data.status === 'login_failed') {
           setToastMsg(response.data.msg);
           handleLogout();
         }
