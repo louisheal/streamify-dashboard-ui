@@ -11,7 +11,8 @@ const HorizontalBar = () => {
   );
 };
 
-const Dashboard = ({ onLogout, data }) => {
+const Dashboard = ({ onLogout, userData }) => {
+    console.log(userData)
   return (
     <div className='flex flex-row bg-neutral-900 overflow-auto w-full h-full'>
       {/* <div className='bg-purple-900 w-16 h-auto'>
@@ -19,9 +20,9 @@ const Dashboard = ({ onLogout, data }) => {
       </div> */}
       <div className='w-full h-full'>
         <div className='flex flex-col m-8'>
-          <ProfileBar displayName={data.displayName} avatarUrl={data.avatarUrl} onLogout={onLogout} />
+          <ProfileBar displayName={userData.displayName} avatarUrl={userData.avatarUrl} onLogout={onLogout} />
           <HorizontalBar />
-          <InfoGrid discountCode={data.discountCode} balance={data.balance} sales={data.sales} />
+          <InfoGrid orders={userData.orders} discountCode={userData.discountCode} balance={userData.balance} sales={userData.sales} />
         </div>
       </div>
     </div>

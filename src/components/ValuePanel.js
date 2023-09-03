@@ -10,7 +10,7 @@ const Label = ({ label }) => {
 
 const Value = ({ value }) => {
   return (
-    <span className='text-white text-5xl font-thin bg-neutral-800 py-8 pl-12' >
+    <span className='text-white text-5xl font-thin bg-neutral-800 py-8 pl-10' >
       {value}
     </span>
   );

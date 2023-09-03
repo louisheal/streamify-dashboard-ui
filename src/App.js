@@ -11,8 +11,8 @@ axios.defaults.baseURL = process.env.REACT_APP_API_URL
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [failedLogin, setFailedLogin] = useState(false);
   const [userData, setUserData] = useState(null);
-  const [toastMsg, setToastMsg] = useState(null);
 
   useEffect(() => {
     axios.get('/userdata', { withCredentials: true })
@@ -20,7 +20,7 @@ function App() {
         if (response.data.status === 'logged_in') {
           setUserData(response.data);
         } else if (response.data.status === 'login_failed') {
-          setToastMsg(response.data.msg);
+          setFailedLogin(true);
           handleLogout();
         }
       })
@@ -30,7 +30,6 @@ function App() {
   }, []);
 
   const handleLogin = () => {
-    console.log("Login clicked");
     window.location.href = process.env.REACT_APP_API_URL + '/auth/twitch';
   };
 
@@ -48,9 +47,9 @@ function App() {
       ) : (
         <>
           {userData ? (
-            <Dashboard onLogout={handleLogout} data={userData} />
+            <Dashboard onLogout={handleLogout} userData={userData} />
           ) : (
-            <LoginPage onLogin={handleLogin} toast={toastMsg}/>
+            <LoginPage onLogin={handleLogin} error={failedLogin} />
           )}
         </>
       )}

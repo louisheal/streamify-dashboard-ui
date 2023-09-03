@@ -16,3 +16,12 @@
 .w-min-content {
   width: min-content;
 }
+
+.h-492 {
+  height: 492px;
+}
+
+.px-1-4 {
+  padding-left: 30%;
+  padding-right: 30%;
+}
