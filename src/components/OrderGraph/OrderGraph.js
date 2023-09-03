@@ -36,7 +36,7 @@ const ChartGallery = ({ orders }) => {
 
   return (
     <>
-      <div className='flex flex-row justify-between px-1-4'>
+      <div className='flex flex-row justify-center px-6'>
         <button
           onClick={increaseI}
           disabled={i === orders.length - 1}
@@ -44,7 +44,7 @@ const ChartGallery = ({ orders }) => {
         >
           &lt;
         </button>
-        <h1 className={`${i === 0 ? 'font-bold' : ''} text-white text-center px-6 pt-0.5 m-0`} >{orders[i].month}</h1>
+        <h1 className={`${i === 0 ? 'font-bold' : ''} text-white text-center px-4 pt-0.5 m-0 w-48`} >{orders[i].month}</h1>
         <button
           onClick={decreaseI}
           disabled={i === 0}
